@@ -13,6 +13,7 @@ public class AccessControlService {
     private final AccessControlLogic accessControlLogic;
 
     public Result check(int keyId, int roomId, boolean entrance) {
+        log.debug("user #{} tries to {} room #{}", keyId, entrance ? "enter into" : "leave", roomId);
         return accessControlLogic.check(keyId, roomId, entrance);
     }
 }

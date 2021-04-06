@@ -26,11 +26,11 @@ public class AccessControlLogic {
 
     @PostConstruct // TODO: 4/7/21 remove!!
     public void init() {
-        Stream.iterate(1, i -> i++)
+        Stream.iterate(1, i -> i + 1)
                 .limit(1000)
                 .map(i -> new Key(i, null))
                 .forEach(keyRepository::save);
-        Stream.iterate(1, i -> i++)
+        Stream.iterate(1, i -> i + 1)
                 .limit(5)
                 .map(Room::new)
                 .forEach(roomRepository::save);

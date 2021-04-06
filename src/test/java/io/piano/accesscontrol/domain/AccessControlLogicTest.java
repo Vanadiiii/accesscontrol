@@ -28,13 +28,13 @@ class AccessControlLogicTest {
     @Mock
     private UserIntoRoomChecking_1 userInRoomChecking;
     @Mock
-    private EqualsRoomsChecking_2 equalsRoomsChecking;
+    private RoomsChecking_3 equalsRoomsChecking;
     @Mock
-    private UserExitChecking_3 userExitChecking;
+    private UserExitChecking_2 userExitChecking;
     @Mock
-    private UserEnterChecking_5 userEnterChecking;
+    private UserEnterChecking_4 userEnterChecking;
     @Mock
-    private UserHasGrantsChecking_4 userHasGrantsChecking;
+    private UserHasGrantsChecking_5 userHasGrantsChecking;
 
     @Test
     @DisplayName("Check granted user can enter into room")

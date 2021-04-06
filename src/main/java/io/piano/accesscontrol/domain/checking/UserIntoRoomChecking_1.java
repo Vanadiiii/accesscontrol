@@ -3,21 +3,25 @@ package io.piano.accesscontrol.domain.checking;
 import io.piano.accesscontrol.domain.IChecking;
 import io.piano.accesscontrol.domain.entity.Result;
 import io.piano.accesscontrol.domain.entity.User;
+import io.piano.accesscontrol.exception.CheckProcessException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component("startChecking")
 @RequiredArgsConstructor
 public class UserIntoRoomChecking_1 implements IChecking {
-    private final EqualsRoomsChecking_2 sameRoomsCheck;
-    private final UserHasGrantsChecking_4 userHasGrantsCheck;
+    private final UserExitChecking_2 userExitChecking;
+    private final UserEnterChecking_4 userEnterChecking;
 
     @Override
     public IChecking next(User user) {
-        if (user.getKey().getRoom() != null) {
-            return sameRoomsCheck;
+        boolean isUserInRoom = user.getKey().getRoom() != null;
+        if (isUserInRoom) {
+            return userExitChecking;
         }
-        return userHasGrantsCheck;
+        return userEnterChecking;
     }
 
     @Override
@@ -27,6 +31,7 @@ public class UserIntoRoomChecking_1 implements IChecking {
 
     @Override
     public Result getResponse(User user) {
-        return null;
+        log.error("Unprocessed method 'getResponse()' in class - " + this.getClass());
+        throw CheckProcessException.init(user.getKey().getId());
     }
 }
