@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  datasource:
+#    url: jdbc:h2:mem:testdb
+#    username: postgres
+#    password: password
+#    driver-class-name: org.h2.Driver
+    jpa:
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+      show-sql: true
+      hibernate:
+        ddl-auto: none
+        hbm2ddl:
+          auto: create
