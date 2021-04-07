@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Key {
     @Id
     private int id;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "key_room_link",
             joinColumns = @JoinColumn(name = "key_id"),

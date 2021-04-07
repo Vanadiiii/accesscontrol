@@ -1,16 +1,15 @@
-server:
-  port: 8080
 spring:
   datasource:
-#    url: jdbc:h2:mem:testdb
-#    username: postgres
-#    password: password
-#    driver-class-name: org.h2.Driver
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost/access_control}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
     jpa:
       database: postgresql
       database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-      show-sql: true
       hibernate:
-        ddl-auto: none
         hbm2ddl:
-          auto: create
+          auto: none
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml

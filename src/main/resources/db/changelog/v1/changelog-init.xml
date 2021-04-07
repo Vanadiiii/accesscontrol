@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="1" author="imatveev">
+        <createTable tableName="key">
+            <column name="id" type="integer">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="room">
+            <column name="id" type="integer">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="key_room_link">
+            <column name="key_id" type="integer"/>
+            <column name="room_id" type="integer"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="key_room_link"
+                baseColumnNames="key_id"
+                constraintName="key_link_fk"
+                referencedTableName="key"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="key_room_link"
+                baseColumnNames="room_id"
+                constraintName="room_link_fk"
+                referencedTableName="room"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

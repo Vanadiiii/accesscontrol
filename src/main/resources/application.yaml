@@ -2,4 +2,10 @@ server:
   port: 8080
 spring:
   profiles:
-    active: test
+    active: ${PROFILE:dev}
+  liquibase:
+    enabled: false
+  jpa:
+    hibernate:
+      hbm2ddl:
+        auto: create
