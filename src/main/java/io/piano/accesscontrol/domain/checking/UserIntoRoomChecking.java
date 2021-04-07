@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component("startChecking")
 @RequiredArgsConstructor
-public class UserIntoRoomChecking_1 implements IChecking {
+public class UserIntoRoomChecking implements IChecking {
     private final UserExitChecking userExitChecking;
     private final UserEnterChecking userEnterChecking;
 
