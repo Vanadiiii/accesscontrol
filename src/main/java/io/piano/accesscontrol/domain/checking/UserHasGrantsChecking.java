@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class UserHasGrantsChecking_5 implements IChecking {
+public class UserHasGrantsChecking implements IChecking {
     private final KeyRepository keyRepository;
 
     @Override

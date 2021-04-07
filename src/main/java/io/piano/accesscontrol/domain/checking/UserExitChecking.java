@@ -14,14 +14,14 @@ import java.util.function.Predicate;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class UserEnterChecking_4 implements IChecking {
-    private final UserHasGrantsChecking_5 userHasGrantsChecking;
-    private final Predicate<User> CONDITION = User::isEntrance;
+public class UserExitChecking implements IChecking {
+    private final Predicate<User> CONDITION = user -> !user.isEntrance();
+    private final RoomsChecking roomsChecking;
 
     @Override
     public IChecking next(User user) {
         if (CONDITION.test(user)) {
-            return userHasGrantsChecking;
+            return roomsChecking;
         }
         log.error("Unprocessed method 'next()' in class - " + this.getClass());
         throw CheckProcessException.init(user.getKey().getId());
@@ -35,16 +35,18 @@ public class UserEnterChecking_4 implements IChecking {
     @Override
     public Result getResponse(User user) {
         int keyId = user.getKey().getId();
-        int roomId = user.getRoomId();
+        int destinationRoomId = user.getRoomId();
+        int presentRoomId = user.getKey().getRoom().getId();
 
-        if (!CONDITION.test(user)) {
-            log.error("User #{} is outside and try to leave room #{}", keyId, roomId);
+        if (CONDITION.test(user)) {
+            log.error("Unprocessed method 'getResponse()' in class - " + this.getClass());
+            throw CheckProcessException.init(keyId);
+        } else {
+            log.error("User #{} can't enter into room #{}, cause he's in room #{}", keyId, destinationRoomId, presentRoomId);
             return new Result(
                     HttpStatus.INTERNAL_SERVER_ERROR,
-                    "You can't leave room #" + roomId + " cause you're already outside"
+                    "You can't enter into room #" + destinationRoomId + " cause you're inside in room #" + presentRoomId
             );
         }
-        log.error("Unprocessed method 'getResponse()' in class - " + this.getClass());
-        throw CheckProcessException.init(keyId);
     }
 }

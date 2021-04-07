@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component("startChecking")
 @RequiredArgsConstructor
 public class UserIntoRoomChecking_1 implements IChecking {
-    private final UserExitChecking_2 userExitChecking;
-    private final UserEnterChecking_4 userEnterChecking;
+    private final UserExitChecking userExitChecking;
+    private final UserEnterChecking userEnterChecking;
 
     @Override
     public IChecking next(User user) {
