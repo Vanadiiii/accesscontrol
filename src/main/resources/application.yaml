@@ -2,9 +2,10 @@ server:
   port: 8080
 spring:
   profiles:
-    active: ${PROFILE:dev}
+    active: ${PROFILE}
   liquibase:
-    enabled: false
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
   jpa:
     hibernate:
       hbm2ddl:
