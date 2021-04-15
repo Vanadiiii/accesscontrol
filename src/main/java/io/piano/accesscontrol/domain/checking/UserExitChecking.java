@@ -3,7 +3,6 @@ package io.piano.accesscontrol.domain.checking;
 import io.piano.accesscontrol.domain.IChecking;
 import io.piano.accesscontrol.domain.entity.Result;
 import io.piano.accesscontrol.domain.entity.User;
-import io.piano.accesscontrol.exception.CheckProcessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,16 +14,12 @@ import java.util.function.Predicate;
 @Component
 @RequiredArgsConstructor
 public class UserExitChecking implements IChecking {
-    private final Predicate<User> CONDITION = user -> !user.isEntrance();
     private final RoomsChecking roomsChecking;
+    private final Predicate<User> CONDITION = user -> !user.isEntrance();
 
     @Override
     public IChecking next(User user) {
-        if (CONDITION.test(user)) {
-            return roomsChecking;
-        }
-        log.error("Unprocessed method 'next()' in class - " + this.getClass());
-        throw CheckProcessException.init(user.getKey().getId());
+        return roomsChecking;
     }
 
     @Override
@@ -38,15 +33,10 @@ public class UserExitChecking implements IChecking {
         int destinationRoomId = user.getRoomId();
         int presentRoomId = user.getKey().getRoom().getId();
 
-        if (CONDITION.test(user)) {
-            log.error("Unprocessed method 'getResponse()' in class - " + this.getClass());
-            throw CheckProcessException.init(keyId);
-        } else {
-            log.error("User #{} can't enter into room #{}, cause he's in room #{}", keyId, destinationRoomId, presentRoomId);
-            return new Result(
-                    HttpStatus.INTERNAL_SERVER_ERROR,
-                    "You can't enter into room #" + destinationRoomId + " cause you're inside in room #" + presentRoomId
-            );
-        }
+        log.error("User #{} can't enter into room #{}, cause he's in room #{}", keyId, destinationRoomId, presentRoomId);
+        return new Result(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                "You can't enter into room #" + destinationRoomId + " cause you're inside in room #" + presentRoomId
+        );
     }
 }

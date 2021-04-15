@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AccessControlExceptionHandler {
     @ExceptionHandler(value = {CheckProcessException.class, NoSuchKeyException.class, NoSuchRoomException.class})
-    public ResponseEntity<String> handleNoSuchKeyException(RuntimeException e) {
+    public ResponseEntity<String> handleNoSuchValueException(RuntimeException e) {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(e.getMessage());

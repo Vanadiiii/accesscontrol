@@ -15,13 +15,13 @@ import java.util.function.Predicate;
 @Component
 @RequiredArgsConstructor
 public class UserEnterChecking implements IChecking {
-    private final UserHasGrantsChecking userHasGrantsChecking;
+    private final WorkingHoursChecking workingHoursChecking;
     private final Predicate<User> CONDITION = User::isEntrance;
 
     @Override
     public IChecking next(User user) {
         if (CONDITION.test(user)) {
-            return userHasGrantsChecking;
+            return workingHoursChecking;
         }
         log.error("Unprocessed method 'next()' in class - " + this.getClass());
         throw CheckProcessException.init(user.getKey().getId());
