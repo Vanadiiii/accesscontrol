@@ -18,10 +18,10 @@ public class Room {
     @Id
     private int id;
 
-    @ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "nextRoomFor", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "nextRoomFor", fetch = FetchType.LAZY)
     private List<Room> nextRooms;
 
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "room_room_link",
             joinColumns = @JoinColumn(name = "next_room_id"),
