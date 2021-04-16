@@ -44,7 +44,7 @@ public class AccessControlLogic {
     }
 
     public List<UserInfo> getUserStatistic(Pageable pageable) {
-        return keyRepository.findAll(pageable) // TODO: 4/16/21 fix strange filter!!
+        return keyRepository.findAllByOrderById(pageable)
                 .stream()
                 .map(key -> UserInfo.builder()
                         .id(key.getId())

@@ -6,7 +6,6 @@ import io.piano.accesscontrol.service.AccessControlStatisticService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +18,11 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/info")
 @RequiredArgsConstructor
-public class StatisticController {
+public class InfoController {
     private final AccessControlStatisticService statisticService;
 
     @GetMapping("/rooms")
-    public ResponseEntity<List<RoomInfo>> getRoomsInfo() {
+    public ResponseEntity<List<RoomInfo>> getFilledRoomsInfo() {
         return ResponseEntity.ok(statisticService.getRoomsStatistic());
     }
 

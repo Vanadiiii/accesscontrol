@@ -2,6 +2,8 @@ package io.piano.accesscontrol.repository;
 
 import io.piano.accesscontrol.domain.entity.Key;
 import io.piano.accesscontrol.domain.entity.Room;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +19,6 @@ public interface KeyRepository extends JpaRepository<Key, Integer> {
     @Query(value = "UPDATE Key k SET k.room = ?1 WHERE k.id = ?2")
     @Transactional
     void updateRoom(Room room, int id);
+
+    Page<Key> findAllByOrderById(Pageable pageable);
 }
