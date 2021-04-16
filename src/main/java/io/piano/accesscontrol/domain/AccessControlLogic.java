@@ -1,9 +1,6 @@
 package io.piano.accesscontrol.domain;
 
-import io.piano.accesscontrol.domain.entity.Key;
-import io.piano.accesscontrol.domain.entity.Result;
-import io.piano.accesscontrol.domain.entity.RoomInfo;
-import io.piano.accesscontrol.domain.entity.User;
+import io.piano.accesscontrol.domain.entity.*;
 import io.piano.accesscontrol.exception.NoSuchKeyException;
 import io.piano.accesscontrol.exception.NoSuchRoomException;
 import io.piano.accesscontrol.repository.KeyRepository;
@@ -11,9 +8,11 @@ import io.piano.accesscontrol.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -44,10 +43,18 @@ public class AccessControlLogic {
         return checking.getResponse(user);
     }
 
-    public List<User> getUserStatistic() {
-        return keyRepository.findAll()
+    public List<UserInfo> getUserStatistic(Pageable pageable) {
+        return keyRepository.findAll(pageable) // TODO: 4/16/21 fix strange filter!!
                 .stream()
-                .map(key -> User.builder().key(key).build())
+                .map(key -> UserInfo.builder()
+                        .id(key.getId())
+                        .roomId(
+                                Optional.ofNullable(key.getRoom())
+                                        .map(Room::getId)
+                                        .orElse(null)
+                        )
+                        .build()
+                )
                 .collect(Collectors.toList());
     }
 

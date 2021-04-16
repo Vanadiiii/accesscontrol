@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class RoomsChecking implements IChecking {
+public class ThisRoomsChecking implements IChecking {
     private final KeyRepository keyRepository;
 
     @Override
@@ -31,8 +31,6 @@ public class RoomsChecking implements IChecking {
     public Result getResponse(User user) {
         int keyId = user.getKey().getId();
         int roomId = user.getRoomId();
-
-        System.out.println(user);
 
         if (user.getRoomId() == user.getKey().getRoom().getId()) {
             user.getKey().setRoom(null);

@@ -35,7 +35,7 @@ public class UserHasGrantsChecking implements IChecking {
         int roomId = user.getRoomId();
 
         if (user.getKey().getId() % user.getRoomId() == 0) {
-            Key updatedKey = new Key(keyId, new Room(roomId));
+            Key updatedKey = new Key(keyId, Room.builder().id(roomId).build());
             keyRepository.deleteById(keyId);
             keyRepository.saveAndFlush(updatedKey);
             log.info("User #{} enter to room #{}", keyId, roomId);

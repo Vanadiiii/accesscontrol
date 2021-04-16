@@ -5,7 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <include file="v1/changelog-init.xml" relativeToChangelogFile="true"/>
-    <include file="v1/changelog-add-start-values.xml" relativeToChangelogFile="true"/>
+    <include file="v1/changelog-1-init.xml" relativeToChangelogFile="true"/>
+    <include file="v1/changelog-2-add-start-values.xml" relativeToChangelogFile="true"/>
+    <include file="v1/changelog-3-add-rooms-link-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1/changelog-4-add-default-linked-rooms.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

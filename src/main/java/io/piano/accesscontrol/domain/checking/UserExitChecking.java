@@ -13,18 +13,23 @@ import java.util.function.Predicate;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class UserExitChecking implements IChecking {
-    private final RoomsChecking roomsChecking;
+public class UserExitChecking implements IChecking {// TODO: 4/16/21 rename!
+    private final ThisRoomsChecking thisRoomsChecking;
+    private final LinkedRoomsChecking linkedRoomsChecking;
     private final Predicate<User> CONDITION = user -> !user.isEntrance();
 
     @Override
     public IChecking next(User user) {
-        return roomsChecking;
+        if (CONDITION.test(user)) {
+            return thisRoomsChecking;
+        } else {
+            return linkedRoomsChecking;
+        }
     }
 
     @Override
     public boolean hasNext(User user) {
-        return CONDITION.test(user);
+        return true;
     }
 
     @Override
