@@ -5,7 +5,6 @@ import io.piano.accesscontrol.domain.entity.Room;
 import io.piano.accesscontrol.domain.entity.RoomInfo;
 import io.piano.accesscontrol.domain.entity.UserInfo;
 import io.piano.accesscontrol.repository.KeyRepository;
-import io.piano.accesscontrol.repository.RoomRepository;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
