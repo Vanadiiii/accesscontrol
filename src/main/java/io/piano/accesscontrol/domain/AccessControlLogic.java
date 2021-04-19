@@ -1,5 +1,6 @@
 package io.piano.accesscontrol.domain;
 
+import com.google.common.collect.Lists;
 import io.piano.accesscontrol.domain.entity.*;
 import io.piano.accesscontrol.exception.NoSuchKeyException;
 import io.piano.accesscontrol.exception.NoSuchRoomException;
@@ -63,7 +64,7 @@ public class AccessControlLogic {
                 .stream()
                 .collect(Collectors.toMap(
                         key -> key.getRoom().getId(),
-                        key -> List.of(key.getId()),
+                        key -> Lists.newArrayList(key.getId()),
                         (keys, otherKeys) -> {
                             keys.addAll(otherKeys);
                             return keys;
