@@ -1,4 +1,4 @@
-package ru.dexsys.accesscontrol.domain.config;
+package ru.dexsys.accesscontrol.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

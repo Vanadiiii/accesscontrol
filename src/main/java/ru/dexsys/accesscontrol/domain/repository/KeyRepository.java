@@ -1,4 +1,4 @@
-package ru.dexsys.accesscontrol.repository;
+package ru.dexsys.accesscontrol.domain.repository;
 
 import ru.dexsys.accesscontrol.domain.entity.Key;
 import ru.dexsys.accesscontrol.domain.entity.Room;

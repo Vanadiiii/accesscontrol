@@ -1,7 +1,7 @@
 package ru.dexsys.accesscontrol.domain.checking;
 
 import ru.dexsys.accesscontrol.domain.IChecking;
-import ru.dexsys.accesscontrol.domain.config.WorkingHoursConfiguration;
+import ru.dexsys.accesscontrol.config.WorkingHoursConfiguration;
 import ru.dexsys.accesscontrol.domain.entity.Result;
 import ru.dexsys.accesscontrol.domain.entity.User;
 import lombok.RequiredArgsConstructor;

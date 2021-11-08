@@ -6,7 +6,7 @@ import ru.dexsys.accesscontrol.domain.entity.Result;
 import ru.dexsys.accesscontrol.domain.entity.Room;
 import ru.dexsys.accesscontrol.domain.entity.User;
 import ru.dexsys.accesscontrol.exception.CheckProcessException;
-import ru.dexsys.accesscontrol.repository.KeyRepository;
+import ru.dexsys.accesscontrol.domain.repository.KeyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

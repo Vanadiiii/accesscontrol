@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import ru.dexsys.accesscontrol.domain.entity.*;
 import ru.dexsys.accesscontrol.exception.NoSuchKeyException;
 import ru.dexsys.accesscontrol.exception.NoSuchRoomException;
-import ru.dexsys.accesscontrol.repository.KeyRepository;
-import ru.dexsys.accesscontrol.repository.RoomRepository;
+import ru.dexsys.accesscontrol.domain.repository.KeyRepository;
+import ru.dexsys.accesscontrol.domain.repository.RoomRepository;
 
 import java.util.List;
 import java.util.Optional;

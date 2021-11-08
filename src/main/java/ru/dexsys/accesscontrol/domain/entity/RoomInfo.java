@@ -1,7 +1,7 @@
 package ru.dexsys.accesscontrol.domain.entity;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.SwaggerDefinition;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,8 +13,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("Информация о комнате")
 public class RoomInfo {
     private int roomId;
-    @ApiModelProperty(notes = "All users in the room")
+    @ApiModelProperty(notes = "Все пользователи, которые находятся в комнате")
     private List<Integer> userIds;
 }

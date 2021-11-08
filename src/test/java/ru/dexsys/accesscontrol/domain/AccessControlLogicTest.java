@@ -4,7 +4,7 @@ import ru.dexsys.accesscontrol.domain.entity.Key;
 import ru.dexsys.accesscontrol.domain.entity.Room;
 import ru.dexsys.accesscontrol.domain.entity.RoomInfo;
 import ru.dexsys.accesscontrol.domain.entity.UserInfo;
-import ru.dexsys.accesscontrol.repository.KeyRepository;
+import ru.dexsys.accesscontrol.domain.repository.KeyRepository;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,4 +1,4 @@
-package ru.dexsys.accesscontrol.domain.config;
+package ru.dexsys.accesscontrol.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,8 +7,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-
-import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
@@ -20,7 +18,7 @@ public class SwaggerConfig {
                                 "Симулятор проверки доступа",
                                 "Проверяет доступ в комнату по различным условиям",
                                 ApiInfo.DEFAULT.getVersion(),
-                                ApiInfo.DEFAULT.getTermsOfServiceUrl(),
+                                null,
                                 new Contact("Ivan Matveev", "https://t.me/Vanadiiii42", "vanadiiii42@gmail.com"),
                                 ApiInfo.DEFAULT.getLicense(),
                                 ApiInfo.DEFAULT.getLicenseUrl(),
