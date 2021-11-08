@@ -15,8 +15,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(
                         new ApiInfo(
-                                "Симулятор проверки доступа",
-                                "Проверяет доступ в комнату по различным условиям",
+                                "Пропускная система",
+                                "Проверяет доступ сотрудника в комнату по различным условиям",
                                 ApiInfo.DEFAULT.getVersion(),
                                 null,
                                 new Contact("Ivan Matveev", "https://t.me/Vanadiiii42", "vanadiiii42@gmail.com"),
